@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'org.akhikhl.gretty' version '2.0.0'
+}
+
+group 'com.gitlab.ryctabo.jersey'
+version '1.0.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+gretty {
+    httpPort = 8080
+    contextPath = '/'
+    servletContainer = 'tomcat8'
+}
+
+dependencies {
+    compile 'org.glassfish.jersey.bundles:jaxrs-ri:2.26'
+
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.0'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-grizzly2:2.26'
+}
